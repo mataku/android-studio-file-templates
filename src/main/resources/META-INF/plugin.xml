@@ -1,18 +1,18 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.mataku.androidstudiofiletemplates</id>
+    <id>com.github.mataku.template</id>
     <name>android-studio-file-templates</name>
     <vendor>mataku</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.mataku.androidstudiofiletemplates.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.mataku.androidstudiofiletemplates.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.github.mataku.template.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.github.mataku.template.services.MyProjectService"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.mataku.androidstudiofiletemplates.listeners.MyProjectManagerListener"
+        <listener class="com.github.mataku.template.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
 </idea-plugin>

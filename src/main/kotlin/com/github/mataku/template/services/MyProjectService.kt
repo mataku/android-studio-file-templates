@@ -1,7 +1,7 @@
-package com.github.mataku.androidstudiofiletemplates.services
+package com.github.mataku.template.services
 
 import com.intellij.openapi.project.Project
-import com.github.mataku.androidstudiofiletemplates.MyBundle
+import com.github.mataku.template.MyBundle
 
 class MyProjectService(project: Project) {
 

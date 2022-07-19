@@ -1,1 +1,1 @@
-rootProject.name = "android-studio-file-templates"
+rootProject.name = "template"
