@@ -43,23 +43,15 @@ changelog {
     groups.set(emptyList())
 }
 
-// Configure Gradle Qodana Plugin - read more: https://github.com/JetBrains/gradle-qodana-plugin
-qodana {
-    cachePath.set(projectDir.resolve(".qodana").canonicalPath)
-    reportPath.set(projectDir.resolve("build/reports/inspections").canonicalPath)
-    saveReport.set(true)
-    showReport.set(System.getenv("QODANA_SHOW_REPORT")?.toBoolean() ?: false)
-}
-
 tasks {
     // Set the JVM compatibility versions
     properties("javaVersion").let {
         withType<JavaCompile> {
-            sourceCompatibility = it
-            targetCompatibility = it
+            sourceCompatibility = "1.8"
+            targetCompatibility = "1.8"
         }
         withType<KotlinCompile> {
-            kotlinOptions.jvmTarget = it
+            kotlinOptions.jvmTarget = "1.8"
         }
     }
 
@@ -69,8 +61,6 @@ tasks {
 
     patchPluginXml {
         version.set(properties("pluginVersion"))
-        sinceBuild.set(properties("pluginSinceBuild"))
-        untilBuild.set(properties("pluginUntilBuild"))
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
         pluginDescription.set(
@@ -114,6 +104,7 @@ tasks {
         // pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
-        channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
+        channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }
+            .split('.').first()))
     }
 }

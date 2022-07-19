@@ -4,15 +4,10 @@
     <name>android-studio-file-templates</name>
     <vendor>mataku</vendor>
 
-    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.mataku.template.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.mataku.template.services.MyProjectService"/>
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="other.WizardTemplateProviderImpl" />
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.mataku.template.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
