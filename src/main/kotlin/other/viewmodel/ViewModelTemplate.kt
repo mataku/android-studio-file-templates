@@ -4,9 +4,7 @@ import com.android.tools.idea.wizard.template.Category
 import com.android.tools.idea.wizard.template.CheckBoxWidget
 import com.android.tools.idea.wizard.template.Constraint
 import com.android.tools.idea.wizard.template.FormFactor
-import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.PackageNameWidget
-import com.android.tools.idea.wizard.template.TemplateData
 import com.android.tools.idea.wizard.template.TextFieldWidget
 import com.android.tools.idea.wizard.template.WizardUiContext
 import com.android.tools.idea.wizard.template.booleanParameter
@@ -59,9 +57,8 @@ val viewModelTemplate = template {
         CheckBoxWidget(junitParam),
         CheckBoxWidget(kotestParam)
     )
-    recipe = { data: TemplateData ->
+    recipe = {
         viewModelRecipe(
-            data as ModuleTemplateData,
             moduleName = moduleNameParam.value,
             packageName = packageNameParam.value,
             viewModelName = viewModelNameParam.value,
