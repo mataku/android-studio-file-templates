@@ -39,15 +39,15 @@ jobs:
           java-version: 11
           cache: gradle
 
+      - name: Build
+        run: |
+          ./gradlew buildPlugin
+
       - name: Export Properties
         id: properties
         shell: bash
         run: |
           echo "::set-output name=pluginVerifierHomeDir::~/.pluginVerifier"
-
-      # Run tests
-      - name: Run Tests
-        run: ./gradlew test
 
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache
