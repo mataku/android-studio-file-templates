@@ -17,30 +17,36 @@ fun RecipeExecutor.viewModelRecipe(
     val mainSourcePath = "${moduleName}/src/main/java/${packageName.slashedPackageName()}"
     val testSourcePath = "${moduleName}/src/test/java/${packageName.slashedPackageName()}"
 
+    val viewModelPath = "$mainSourcePath/${viewModelName}.kt"
     save(
         viewModel(
             packageName = packageName,
             viewModelName = viewModelName
         ),
-        File("$mainSourcePath/${viewModelName}.kt")
+        File(viewModelPath)
     )
+    open(File(viewModelPath))
     if (junitTestFileRequired) {
+        val viewModelTestPath = "$testSourcePath/${viewModelName}Test.kt"
         save(
             viewModelTest(
                 packageName = packageName,
                 viewModelName = viewModelName
             ),
-            File("$testSourcePath/${viewModelName}Test.kt")
+            File(viewModelTestPath)
         )
+        open(File(viewModelPath))
     }
     if (kotestSpecFileRequired) {
+        val viewModelSpecPath = "$testSourcePath/${viewModelName}Spec.kt"
         save(
             viewModelSpec(
                 packageName = packageName,
                 viewModelName = viewModelName
             ),
-            File("$testSourcePath/${viewModelName}Spec.kt")
+            File(viewModelSpecPath)
         )
+        open(File(viewModelSpecPath))
     }
 }
 
