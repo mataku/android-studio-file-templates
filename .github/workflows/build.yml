@@ -18,18 +18,11 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.properties.outputs.version }}
-      changelog: ${{ steps.properties.outputs.changelog }}
     steps:
 
       # Check out current repository
       - name: Fetch Sources
         uses: actions/checkout@v3
-
-      # Validate wrapper
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
 
       # Setup Java 11 environment for the next steps
       - name: Setup Java
@@ -42,6 +35,10 @@ jobs:
       - name: Build
         run: |
           ./gradlew buildPlugin
+
+      - name: Run tests
+        run: |
+          ./gradlew test
 
       - name: Export Properties
         id: properties
