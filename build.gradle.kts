@@ -58,6 +58,7 @@ changelog {
 tasks {
     // Set the JVM compatibility versions
     properties("javaVersion").let {
+        // TODO:  Check whether 11 is OK or not
         withType<JavaCompile> {
             sourceCompatibility = "1.8"
             targetCompatibility = "1.8"
