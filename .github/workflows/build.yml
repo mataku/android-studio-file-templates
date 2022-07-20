@@ -34,7 +34,7 @@ jobs:
 
       - name: Build
         run: |
-          ./gradlew buildPlugin
+          ./gradlew buildPlugin -q
 
       - name: Run tests
         run: |
@@ -45,6 +45,9 @@ jobs:
         shell: bash
         run: |
           echo "::set-output name=pluginVerifierHomeDir::~/.pluginVerifier"
+      - name: Run listProductsRelease
+        run: |
+          ./gradlew listProductsRelease -q
 
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache
