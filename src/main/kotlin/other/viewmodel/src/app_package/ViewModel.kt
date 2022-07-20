@@ -1,6 +1,6 @@
 package other.viewmodel.src.app_package
 
-fun viewModelTemplate(
+fun viewModel(
     packageName: String,
     viewModelName: String
 ) = """package $packageName

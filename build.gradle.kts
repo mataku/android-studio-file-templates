@@ -22,6 +22,16 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    testImplementation("io.kotest:kotest-runner-junit5:5.3.2")
+    testImplementation("io.kotest:kotest-assertions-core:5.3.2")
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
+    maxHeapSize = "1024m"
+}
+
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
     pluginName.set(properties("pluginName"))
@@ -48,6 +58,7 @@ changelog {
 tasks {
     // Set the JVM compatibility versions
     properties("javaVersion").let {
+        // TODO:  Check whether 11 is OK or not
         withType<JavaCompile> {
             sourceCompatibility = "1.8"
             targetCompatibility = "1.8"
