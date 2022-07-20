@@ -4,8 +4,9 @@
     <name>android-studio-file-templates</name>
     <vendor>mataku</vendor>
 
+    <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.android</depends>
-    <depends>com.intellij.modules.androidstudio</depends>
+    <depends>org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
         <wizardTemplateProvider implementation="other.WizardTemplateProviderImpl" />
