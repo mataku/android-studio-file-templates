@@ -27,7 +27,6 @@ repositories {
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
     pluginName.set(properties("pluginName"))
-    localPath.set("/Applications/Android Studio.app/Contents")
     type.set(properties("platformType"))
     downloadSources.set(true)
 
@@ -35,6 +34,11 @@ intellij {
     plugins.set(
         properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty)
     )
+    if (System.getenv("CI") == "true") {
+        version.set(properties("platformVersion"))
+    } else {
+        localPath.set("/Applications/Android Studio.app/Contents")
+    }
 }
 
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
